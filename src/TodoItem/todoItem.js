@@ -1,9 +1,19 @@
 import React from 'react';
+import './style.css';
 
 class TodoItem extends React.Component {
   render() {
-    return(<div> Hello from the todo item component </div>);
+    const { todo } = this.props;
+
+    return(
+      <div className={'todoItem' + (todo.completed ? ' completed' : '')} onClick={this.toggleTodo}>{todo.text}</div>
+    );
   }
+
+  toggleTodo = () => {
+    this.props.updateTodoFunction(this.props.todo);
+  }
+
 }
 
 export default TodoItem;
